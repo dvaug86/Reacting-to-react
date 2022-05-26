@@ -1,11 +1,15 @@
-import React, { useState, useEffectg } from "react";
+import React, { useState, useEffect } from "react";
 import Greeter from './components/Greeter'
 const App = () => {
 
     const [username, setUsername] = useState('');
     const [loaded, setLoaded] = useState(false);
-
-
+    useEffect(()=>{
+        setTimeout(()=>{
+            setLoaded(true)
+        }, 3000);
+   
+    });
     if (loaded) {
         return (
             <div>
@@ -23,9 +27,13 @@ const App = () => {
         return (
             <div>
                 <h1 className="d-flex justify-content-center">Website is loading...</h1>
-                <button className="d-flex justify-content-center" onClick={e => setLoaded(true)}></button>
+                <p className="d-flex justify-content-center">
+                    <button onClick={() => setLoaded(true)}>Click to Load!</button>
+                </p>
             </div>
         )
     }
+
+
 }
 export default App;
